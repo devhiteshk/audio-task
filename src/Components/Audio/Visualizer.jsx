@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Tooltip } from "@chakra-ui/react";
 import * as React from "react";
 import { AudioVisualizer, LiveAudioVisualizer } from "react-audio-visualize";
 import { AudioRecorder, useAudioRecorder } from "react-audio-voice-recorder";
@@ -116,12 +116,17 @@ export default function App() {
                 controls={true}
                 src={item?.url}
               ></audio> */}
-              <Box
-                onClick={() => playAudioWithPitch(item?.blob)}
-                height={"40px"}
-                width={"40px"}
-                bgColor={"red"}
-              />
+              <Tooltip label="Play">
+                <Box
+                  cursor={"pointer"}
+                  mt={"10px"}
+                  onClick={() => playAudioWithPitch(item?.blob)}
+                  height={"15px"}
+                  width={"15px"}
+                  bgColor={"red"}
+                  borderRadius={"50%"}
+                />
+              </Tooltip>
               <AudioVisualizer
                 blob={item?.blob}
                 width={300}
