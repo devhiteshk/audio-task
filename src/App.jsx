@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./App.css";
 import { Box, Text } from "@chakra-ui/react";
 import Home from "./Components/Home/Home";

@@ -13,7 +13,7 @@ export default function App() {
   const playAudioWithPitch = async (blob) => {
     const audioContext = new AudioContext();
     const source = audioContext.createBufferSource();
-    console.log(source, blob, await blob.arrayBuffer());
+    // console.log(source, blob, await blob.arrayBuffer());
     let Arrbuffer = await blob.arrayBuffer();
 
     if (Arrbuffer) {
@@ -21,7 +21,7 @@ export default function App() {
         source.buffer = buffer;
         source.playbackRate.value = playbackRate; // Use the state to control playback rate
         source.connect(audioContext.destination);
-        console.log("buffer", source.buffer);
+        // console.log("buffer", source.buffer);
         source.start(0);
       });
     }
@@ -41,7 +41,7 @@ export default function App() {
     setPlaybackRate(e.target.value);
   };
 
-  console.log(AudioArray, blob);
+  // console.log(AudioArray, blob);
 
   return (
     <Box
@@ -61,6 +61,7 @@ export default function App() {
       />
 
       <input
+        className="slider"
         type="range"
         id="vol"
         name="vol"
@@ -68,6 +69,7 @@ export default function App() {
         max="3"
         step={0.1}
         value={pitchVal}
+        width={"200px !important"}
         onChange={(e) => handleSlideChange(e)}
       />
 
@@ -116,13 +118,13 @@ export default function App() {
                 controls={true}
                 src={item?.url}
               ></audio> */}
-              <Tooltip label="Play">
+              <Tooltip variant={"secondary"} label="Play">
                 <Box
                   cursor={"pointer"}
                   mt={"10px"}
                   onClick={() => playAudioWithPitch(item?.blob)}
-                  height={"15px"}
-                  width={"15px"}
+                  height={"20px"}
+                  width={"20px"}
                   bgColor={"red"}
                   borderRadius={"50%"}
                 />
